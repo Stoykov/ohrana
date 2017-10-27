@@ -1,0 +1,27 @@
+{
+    "name": "stoykov/ohrana",
+    "description": "ACL Package for Lumen",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^5.5",
+        "laravel-doctrine/orm": "1.3.*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~6.0",
+        "mockery/mockery": "~0.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Antoan Stoykov",
+            "email": "me@astoykov.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "stoykov\\Ohrana\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
