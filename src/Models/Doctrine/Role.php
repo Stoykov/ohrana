@@ -32,7 +32,7 @@ class Role
     protected $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Models\User", mappedBy="roles")
+     * @ORM\ManyToMany(targetEntity="App\Entities\User", mappedBy="roles")
      */
     protected $users;
 
@@ -47,7 +47,7 @@ class Role
     /**
      * @param User $user
      */
-    public function addUser(\App\Models\User $user)
+    public function addUser(\App\Entities\User $user)
     {
         if ($this->users->contains($user)) {
             return;
@@ -59,7 +59,7 @@ class Role
     /**
      * @param User $user
      */
-    public function removeUser(\App\Models\User $user)
+    public function removeUser(\App\Entities\User $user)
     {
         if (!$this->users->contains($user)) {
             return;
