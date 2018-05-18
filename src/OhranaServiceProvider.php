@@ -41,6 +41,7 @@ class OhranaServiceProvider extends ServiceProvider
         $this->publishes([
             $configPath => config_path('ohrana.php'),
         ], 'config');
+        $this->app->configure('ohrana');
     }
 
     public function registerMiddleware()

@@ -116,9 +116,10 @@ class ACLContainer {
 
         foreach ($paths as $key => $path) {
             if (strstr($path, "Controllers")) {
-                $controllers = $this->app['files']->glob($path);
+                $controllers = $this->app['files']->glob("{$path}*.php");
+                $controllers = array_merge($this->app['files']->glob("{$path}/*.php"), $controllers);
             } else {
-                $controllers = $this->app['files']->glob("{$path}/Http/Controllers/*");
+                $controllers = $this->app['files']->glob("{$path}/Http/Controllers/*.php");
             }
 
             is_array($controllers) || $controllers = [];
