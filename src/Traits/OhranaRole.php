@@ -4,8 +4,8 @@ namespace stoykov\Ohrana\Traits;
 use stoykov\Ohrana\Models\Doctrine\Role;
 use stoykov\Ohrana\Models\Doctrine\Permission;
 
-use stoykov\Ohrana\Repositories\Permission AS PermissionRepo;
-use stoykov\Ohrana\Repositories\Role AS RoleRepo;
+use stoykov\Ohrana\Repositories\Permissions AS PermissionRepo;
+use stoykov\Ohrana\Repositories\Roles AS RoleRepo;
 
 use stoykov\Ohrana\Exceptions\NoRepositoryException;
 
