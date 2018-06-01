@@ -50,6 +50,12 @@ class Permission
     private $method;
 
     /**
+     * List of allowed Methods parsed from action
+     * @var array
+     */
+    private $methods;
+
+    /**
      * Is that a global access permission?
      * @var bool
      */
@@ -173,6 +179,22 @@ class Permission
     public function setMethod($method)
     {
         $this->method = $method;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethods()
+    {
+        return $this->methods;
+    }
+
+    /**
+     * @param string $method
+     */
+    public function setMethods($methods)
+    {
+        $this->methods = $methods;
     }
 
     /**

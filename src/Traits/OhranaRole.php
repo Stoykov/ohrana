@@ -127,15 +127,23 @@ trait OhranaRole
         $this->permissions = [];
         if (count($permissions)) {
             foreach ($permissions as $permission) {
-                if ($permission->isGlobal())
+                if ($permission->isGlobal()) {
                     $this->isGlobal = true;
+                    break;
+                }
 
+                // If we have a namespace but no controller and method defined
                 if ($permission->getNamespace() && !$permission->getController() && !$permission->getMethod())
                     $this->permissions[$permission->getNamespace()] = $permission;
+                // If we have a namespace and controller, but no method
                 else if ($permission->getNamespace() && $permission->getController() && !$permission->getMethod())
                     $this->permissions[$permission->getNamespace() . '\\' . $permission->getController()] = $permission;
-                else if ($permission->getNamespace() && $permission->getController() && $permission->getMethod())
-                    $this->permissions[$permission->getNamespace() . '\\' . $permission->getController() . '@' . $permission->getMethod()] = $permission;
+                //If we have all defined
+                else if ($permission->getNamespace() && $permission->getController() && $permission->getMethod()) {
+                    foreach ($permission->getMethods() as $method) {
+                        $this->permissions[$permission->getNamespace() . '\\' . $permission->getController() . '@' . $method] = $permission;
+                    }
+                }
             }
         }
     }
@@ -165,6 +173,7 @@ trait OhranaRole
                     $permission->setNamespace($parsed['namespace']);
                     $permission->setController($parsed['controller']);
                     $permission->setMethod($parsed['method']);
+                    $permission->setMethods($parsed['methods']);
 
                     $permissions[] = $permission;
                 }
@@ -196,6 +205,7 @@ trait OhranaRole
                 $permission->setNamespace($parsed['namespace']);
                 $permission->setController($parsed['controller']);
                 $permission->setMethod($parsed['method']);
+                $permission->setMethods($parsed['methods']);
             }
         }
 

@@ -34,7 +34,8 @@ trait OhranaHelper
             return [
                 "namespace" => 'All',
                 "controller" => 'All',
-                "method" => 'All'
+                "method" => 'All',
+                "methods" => ['All']
             ];
         }
 
@@ -45,7 +46,8 @@ trait OhranaHelper
             return [
                 "namespace" => implode("\\", $explodedAction),
                 "controller" => 'All',
-                "method" => 'All'
+                "method" => 'All',
+                "methods" => ['All']
             ];
         }
 
@@ -54,16 +56,19 @@ trait OhranaHelper
             return [
                 "namespace" => implode("\\", $explodedAction),
                 "controller" => 'All',
-                "method" => 'All'
+                "method" => 'All',
+                "methods" => ['All']
             ];
         }
 
         list($controller, $method) = explode("@", $controllerMethod);
+        $methods = explode(";", $method);
 
         return [
             "namespace" => implode("\\", $explodedAction),
             "controller" => $controller,
-            "method" => $method
+            "method" => $method,
+            "methods" => $methods
         ];
     }
 }
