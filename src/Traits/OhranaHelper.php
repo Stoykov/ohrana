@@ -41,7 +41,6 @@ trait OhranaHelper
 
         $explodedAction = explode("\\", $permission);
         $controllerMethod = $explodedAction[count($explodedAction) - 1];
-        unset($explodedAction[count($explodedAction) - 1]);
         if (!stristr($controllerMethod, '@')) {
             return [
                 "namespace" => implode("\\", $explodedAction),
@@ -49,6 +48,8 @@ trait OhranaHelper
                 "method" => 'All',
                 "methods" => ['All']
             ];
+        } else {
+            unset($explodedAction[count($explodedAction) - 1]);
         }
 
         // If we have a full namespace access (namespace\All)
