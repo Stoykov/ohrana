@@ -218,6 +218,7 @@ trait OhranaRole
      */
     protected function fetchPermissionsFromCached()
     {
+        $permissions = null;
         foreach ($this->roles as $role) {
             $permissions = \Cache::remember(
                     config('ohrana.cache.prefix') . '_role_' . $role->getId(),
