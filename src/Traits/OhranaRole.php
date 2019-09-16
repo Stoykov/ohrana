@@ -125,7 +125,7 @@ trait OhranaRole
             $permissions = $this->fetchAllPermissionsFromDb();
 
         $this->permissions = [];
-        if (count($permissions)) {
+        if (is_countable($permissions) && count($permissions)) {
             foreach ($permissions as $permission) {
                 if ($permission->isGlobal()) {
                     $this->isGlobal = true;
@@ -162,8 +162,7 @@ trait OhranaRole
         foreach ($this->roles as $role) {
             $dbPermissions = $this->permissionRepository->getPermissions($role->getId());
 
-            if (count($dbPermissions))
-            {
+            if (is_countable($dbPermissions) && count($dbPermissions)) {
                 foreach ($dbPermissions as $permission) {
                     $parsed = $this->parsePermission($permission->getRule());
 
@@ -194,8 +193,7 @@ trait OhranaRole
             throw new NoRepositoryException('getPermissionsFromDb');
 
         $permissions = $this->permissionRepository->getPermissions($roleId);
-        if (count($permissions))
-        {
+        if (is_countable($permissions) && count($permissions)) {
             foreach ($permissions as $permission) {
                 $parsed = $this->parsePermission($permission->getRule());
 
