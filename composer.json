@@ -3,7 +3,7 @@
     "description": "ACL Package for Lumen",
     "type": "library",
     "require": {
-        "laravel/lumen-framework": "~6.x",
+        "laravel/lumen-framework": "6.x",
         "laravel-doctrine/orm": "~1.4"
     },
     "require-dev": {
