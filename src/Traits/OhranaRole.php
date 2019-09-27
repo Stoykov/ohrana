@@ -119,10 +119,11 @@ trait OhranaRole
      */
     protected function getPermissions()
     {
-        if (config('ohrana.cache.enabled'))
+        if (config('ohrana.cache.enabled')) {
             $permissions = $this->fetchPermissionsFromCached();
-        else
+        } else {
             $permissions = $this->fetchAllPermissionsFromDb();
+        }
 
         $this->permissions = [];
         if (is_countable($permissions) && count($permissions)) {
@@ -146,6 +147,7 @@ trait OhranaRole
                 }
             }
         }
+        return $this->permissions;
     }
 
     /**
